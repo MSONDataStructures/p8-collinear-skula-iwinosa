@@ -6,6 +6,7 @@
 import java.util.Comparator;
 import edu.princeton.cs.algs4.StdDraw;
 
+// Skula's Part
 public class Point implements Comparable<Point> {
 
     private final int x;     // x-coordinate of this point
@@ -52,8 +53,10 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-        // TODO: YOUR CODE HERE
-        return x;
+        if (this.x == that.x && this.y == that.y) return Double.NEGATIVE_INFINITY;
+        if (this.x == that.x) return Double.POSITIVE_INFINITY;
+        if (this.y == that.y) return +0.0;
+        return (double) (that.y - this.y) / (that.x - this.x);
     }
 
     /**
@@ -67,8 +70,11 @@ public class Point implements Comparable<Point> {
      *         and a positive integer if this point is greater than the argument point
      */
     public int compareTo(Point that) {
-        // TODO: YOUR CODE HERE
-      return 0;
+        if (this.y < that.y) return -1;
+        if (this.y > that.y) return +1;
+        if (this.x < that.x) return -1;
+        if (this.x > that.x) return +1;
+        return 0;
     }
 
     /**
@@ -77,8 +83,15 @@ public class Point implements Comparable<Point> {
      * @return the Comparator that defines this ordering on points
      */
     public Comparator<Point> slopeOrder() {
-        // TODO: YOUR CODE HERE
-        return null;
+        return new SlopeOrder();
+    }
+
+    private class SlopeOrder implements Comparator<Point> {
+        public int compare(Point p1, Point p2) {
+            double slope1 = slopeTo(p1);
+            double slope2 = slopeTo(p2);
+            return Double.compare(slope1, slope2);
+        }
     }
 
 

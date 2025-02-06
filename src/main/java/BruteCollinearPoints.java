@@ -6,6 +6,8 @@
  *   check whether the three slopes between p and q, 
  *   between p and r, and between p and s are all equal.
  *************************************************************************/
+
+// Iwinosa's Part
 public class BruteCollinearPoints {
 
     public BruteCollinearPoints(Point[] points) {
