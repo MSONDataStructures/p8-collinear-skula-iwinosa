@@ -37,7 +37,7 @@ public class BruteCollinearPoints {
                         Point r = sortedPoints[k];
                         Point s = sortedPoints[l];
 
-                        if (slope(p, q) == slope(p, r) && slope(p, r) == slope(p, s)) {
+                        if (p.slopeTo(q) == p.slopeTo(r) && p.slopeTo(r) == p.slopeTo(s)) {
                             segments.add(new LineSegment(p, s));
                         }
                     }
@@ -46,12 +46,12 @@ public class BruteCollinearPoints {
         }
     }
 
-    private double slope(Point p, Point q) {
-        if (p.x == q.x) {
-            return Double.POSITIVE_INFINITY; // Handle vertical lines
-        }
-        return (double) (q.y - p.y) / (q.x - p.x);
-    }
+//    private double slope(Point p, Point q) {
+//        if (p.x == q.x) {
+//            return Double.POSITIVE_INFINITY; // Handle vertical lines
+//        }
+//        return (double) (q.y - p.y) / (q.x - p.x);
+//    }
 
 
 
